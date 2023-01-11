@@ -22,12 +22,6 @@
 **Update a Users Password ( {"userpass" : "x"} )**
 > PUT /api/users/{username}
 
-**Add a user to a Training Session ( {"userName" : "x", "trainingSessionId" : "x" } )**
-> POST /api/users/addTraining
-
-**Remove a user to a Training Session ( {"userName" : "x", "trainingSessionId" : "x" } )**
-> DELETE /api/users/addTraining
-
 **Get Specific User**
 > GET /api/users/{username}
 
@@ -36,16 +30,3 @@
 
 **Delete a Specific User**
 > DELETE /api/users/{username}
-
-**Create Training Session ( {"title" : "x", "time" : "x", "fullAddress" : "x", "date" : "x", 
-"maxParticipants" : "x", "category" : "x"} )** 
-> POST /api/training
-
-**Delete a Specific Training Session**
-> DELETE /api/training/{trainingSessionId}
-
-**Get Specific Training Session**
-> GET /api/training/{trainingSessionId}
-
-**Update a Training Session ( {"x" : "x", "x" : "x"} )**
-> PUT /api/training/{trainingSessionId}
