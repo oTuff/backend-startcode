@@ -25,7 +25,6 @@ public class UserFacadeTest {
     User u1, u2;
     CityInfo c1,c2;
     Address a1,a2;
-    Category cat1, cat2;
 
     public UserFacadeTest() throws ParseException {
     }
@@ -51,8 +50,6 @@ public class UserFacadeTest {
         c2 = new CityInfo(2800,"Lyngby");
         a1 = new Address("sankt jacobsvej",c1);
         a2 = new Address("nørgardsvej",c2);
-        cat1 = new Category(1, "Yoga");
-        cat2 = new Category(2, "Dans");
         u1.setUserName("Oscar");
         u1.setUserPass("test");
         u1.setUserEmail("Oscar@gmail.com");
@@ -69,9 +66,6 @@ public class UserFacadeTest {
             em.createNamedQuery("Role.deleteAllRows").executeUpdate();
             em.createNamedQuery("Address.deleteAllRows").executeUpdate();
             em.createNamedQuery("CityInfo.deleteAllRows").executeUpdate();
-            em.createNamedQuery("Category.deleteAllRows").executeUpdate();
-            em.persist(cat1);
-            em.persist(cat2);
             em.persist(userRole);
             em.persist(c1);
             em.persist(c2);
