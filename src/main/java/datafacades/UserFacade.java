@@ -79,7 +79,7 @@ public class UserFacade {
             em.getTransaction().commit();
             return u;
         } catch (Exception e) {
-            throw new API_Exception("Can't find a user with the username: "+user.getUserName(),400,e);
+            throw new API_Exception("Can't find a user with the username: " + user.getUserName(), 400, e);
         } finally {
             em.close();
         }
@@ -87,11 +87,11 @@ public class UserFacade {
 
     public User getUserByUserName(String userName) throws API_Exception {
         EntityManager em = getEntityManager();
-        try{
+        try {
             User u = em.find(User.class, userName);
             return u;
-        } catch (Exception e){
-            throw new API_Exception("Can't find a user with the username: " + userName,404,e);
+        } catch (Exception e) {
+            throw new API_Exception("Can't find a user with the username: " + userName, 404, e);
         }
 
     }
@@ -101,8 +101,8 @@ public class UserFacade {
         try {
             TypedQuery<User> query = em.createQuery("SELECT u FROM User u", User.class);
             return query.getResultList();
-        } catch (Exception e){
-            throw new API_Exception("Can't find any users in the system",404,e);
+        } catch (Exception e) {
+            throw new API_Exception("Can't find any users in the system", 404, e);
         }
     }
 
@@ -116,60 +116,13 @@ public class UserFacade {
             em.getTransaction().commit();
         } catch (Exception e) {
             if (user == null) {
-                throw new API_Exception("Can't find a user with the username: " + userName,400,e);
+                throw new API_Exception("Can't find a user with the username: " + userName, 400, e);
             }
         } finally {
             em.close();
         }
         return user;
     }
-
-    public User addUserToTrainingSession(String userName,int trainingSessionId) throws API_Exception {
-        EntityManager em = getEntityManager();
-        User user = em.find(User.class,userName);
-        TrainingSession trainingSession = em.find(TrainingSession.class,trainingSessionId);
-        try {
-            em.getTransaction().begin();
-            trainingSession.getUsers().add(user);
-            em.getTransaction().commit();
-
-        } catch (Exception e) {
-            if (user == null) {
-                throw new API_Exception("Can't find a user with the username: " + userName,400,e);
-            }
-            if (trainingSession == null) {
-                throw  new API_Exception("Can't find a trainingsession with the id: "+trainingSessionId,400,e);
-            }
-        } finally {
-            em.close();
-        }
-        return user;
-    }
-
-    public User removeUserToTrainingSession(String userName, int trainingSessionId) throws API_Exception {
-        EntityManager em = getEntityManager();
-        User user = em.find(User.class,userName);
-        TrainingSession trainingSession = em.find(TrainingSession.class,trainingSessionId);
-        try {
-            em.getTransaction().begin();
-            user.removeTrainingSession(trainingSession);
-            trainingSession.getUsers().remove(user);
-            em.getTransaction().commit();
-
-        } catch (Exception e) {
-            if (user == null) {
-                throw new API_Exception("Can't find a user with the username: " + userName,400,e);
-            }
-            if (trainingSession == null) {
-                throw  new API_Exception("Can't find a trainingsession with the id: "+trainingSessionId,400,e);
-            }
-        } finally {
-            em.close();
-        }
-        return user;
-    }
-
 }
-
 
 

@@ -16,8 +16,6 @@ public class Populator {
         EntityManagerFactory emf = EMF_Creator.createEntityManagerFactory();
         EntityManager em = emf.createEntityManager();
 
-        String date1 = "2022/10/29";
-
         User user = new User("user", "user@gmail.com","test123");
         User admin = new User("admin", "admin@gmail.com","test123");
         CityInfo city1 = new CityInfo(2750,"Ballerup");

@@ -74,25 +74,4 @@ public class UserResource {
         UserDTO deletedUser = facade.deleteUser(userName);
         return Response.ok().entity(GSON.toJson(deletedUser)).type(MediaType.APPLICATION_JSON_TYPE.withCharset(StandardCharsets.UTF_8.name())).build();
     }
-
-    @POST
-    @Path("/add/{userName}/{trainingSessionId}")
-    @Produces({MediaType.APPLICATION_JSON})
-    @Consumes({MediaType.APPLICATION_JSON})
-    public Response addUserToTrainingSession(@PathParam("userName") String userName,
-                                             @PathParam("trainingSessionId") int id) throws API_Exception {
-        return Response.ok().entity(GSON.toJson(facade.addUserToTrainingSession(userName,id))).
-                type(MediaType.APPLICATION_JSON_TYPE.withCharset(StandardCharsets.UTF_8.name())).build();
-    }
-
-    @DELETE
-    @Path("/remove/{userName}/{trainingSessionId}")
-    @Produces({MediaType.APPLICATION_JSON})
-    @Consumes({MediaType.APPLICATION_JSON})
-    public Response removeUserToTrainingSession(@PathParam("userName") String userName,
-                                             @PathParam("trainingSessionId") int id) throws API_Exception {
-        return Response.ok().entity(GSON.toJson(facade.removeUserToTrainingSession(userName,id))).
-                type(MediaType.APPLICATION_JSON_TYPE.withCharset(StandardCharsets.UTF_8.name())).build();
-    }
-
 }
