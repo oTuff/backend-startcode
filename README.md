@@ -9,6 +9,7 @@
 7. Add a mysql datasource with the database you are going to use.
 8. Head to persistence.xml and make sure it uses the correct database and has the right username and password.
 9. You can now commit and push and head to GitHub actions, and hopefully it runs with no problems if you followed all the steps above.'
+10. add your rest endpoint documentation to index.html
 
 **End points:**
 
